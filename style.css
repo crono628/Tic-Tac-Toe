@@ -28,6 +28,7 @@ body {
     align-items: center;
     text-align: center;
     display: flex;
+    cursor: pointer;
 }
 
 .cell:first-child,
@@ -50,7 +51,21 @@ body {
     border-bottom: none;
 }
 
+.hover{
+color: rgba(0, 0, 0, 0.3);
+}
+
 .winning-div {
-    justify-content: center;
+    display: flex;
+    justify-content:center;
     align-items: center;
+}
+
+.players-div{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+  padding: 35px;
+  position: absolute;
 }
