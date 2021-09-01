@@ -16,13 +16,22 @@ const winningCombo = [
 ]
 
 const Player = (name, mark) => {
-    const dataPlayer = document.querySelectorAll('[data-player]')
-    dataPlayer.value = name
+    const dataPlayer = document.querySelectorAll('[data-player]');
+    const dataPlayer.value = name;
+    let playerArray = [];
     return {
         name,
         mark
     }
 }
+
+function resetGame (){
+
+}
+
+resetBtn.addEventListener('click', () ={
+  
+})
 
 cells.forEach((cell) => {
     cell.addEventListener('click', (e) => {
