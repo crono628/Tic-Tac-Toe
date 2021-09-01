@@ -51,21 +51,21 @@ body {
     border-bottom: none;
 }
 
-.hover{
-color: rgba(0, 0, 0, 0.3);
+.hover {
+    color: rgba(0, 0, 0, 0.3);
 }
 
 .winning-div {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
 }
 
-.players-div{
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100vw;
-  padding: 35px;
-  position: absolute;
+.players-div {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 35px;
+    position: absolute;
 }
