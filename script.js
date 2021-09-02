@@ -1,36 +1,37 @@
 let xTurn = true;
 const cells = document.querySelectorAll('[data-cell]');
 const resetBtn = document.querySelector('reset-btn')
-const playerOneBtn = document.querySelector('#player-one-btn')
-const playerTwoBtn = document.querySelector('#player-two-btn')
 
-const winningCombo = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-]
+const game = () => {
+    const winningCombo = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ]
 
-const Player = (name, mark) => {
-    const dataPlayer = document.querySelectorAll('[data-player]');
-    const dataPlayer.value = name;
+    const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    
+}
+
+const Player = () => {
+    const playerMark = ** * radiobutton.value ** *
     let playerArray = [];
     return {
-        name,
         mark
     }
 }
 
-function resetGame (){
+function resetGame() {
 
 }
 
-resetBtn.addEventListener('click', () ={
-  
+resetBtn.addEventListener('click', () = {
+
 })
 
 cells.forEach((cell) => {
@@ -53,6 +54,3 @@ cells.forEach((cell) => {
         }
     })
 })
-
-const playerOne = Player('mikey', 'x')
-console.log(playerOne.mark);
