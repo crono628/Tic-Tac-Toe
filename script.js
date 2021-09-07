@@ -1,56 +1,79 @@
-let xTurn = true;
+const resetBtn = document.querySelector('.reset-btn')
+const playerOneBtn = document.querySelector('#player-one-btn')
+const playerTwoBtn = document.querySelector('#player-two-btn')
+const playerInput = document.querySelectorAll('[data-player]')
 const cells = document.querySelectorAll('[data-cell]');
-const resetBtn = document.querySelector('reset-btn')
 
-const game = () => {
-    const winningCombo = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ]
-
-    const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    
+function getIndex(elem) {
+    return cells.indexOf(elem)
 }
 
-const Player = () => {
-    const playerMark = ** * radiobutton.value ** *
-    let playerArray = [];
+const playerFactory = (name) => {
+    let xTurn = true;
+    const getName = () => name;
+    const turn = () => {
+        if (xTurn == true) {
+            return `X`
+        } else if (xTurn == false) {
+            return 'O'
+        }
+    }
+
+    cells.forEach((cell) => {
+        cell.addEventListener('click', (e) => {
+            if (cell.classList.contains('ready')) {
+                e.target.textContent = `${turn()}`;
+                e.target.classList.remove('hover', 'ready')
+                xTurn = !xTurn
+            }
+        })
+        cell.addEventListener('mouseover', (e) => {
+            if (cell.classList.contains('ready')) {
+                e.target.textContent = `${turn()}`;
+                e.target.classList.add('hover')
+            }
+        })
+        cell.addEventListener('mouseleave', (e) => {
+            if (cell.classList.contains('ready')) {
+                e.target.textContent = ``;
+                e.target.classList.remove('hover')
+            }
+        })
+    })
     return {
-        mark
+        getName,
+        turn
     }
 }
 
-function resetGame() {
+const mikey = playerFactory('mikey')
 
-}
+const gameModule = (() => {
+    const gameMarks = ['', '', '', '', '', '', '', '', ''];
+    const getGameMarks = () => {
+        return gameMarks
+    }
+    const gameBoard = document.querySelector('.game-board')
 
-resetBtn.addEventListener('click', () = {
+    const checkWinner = () => {
+        winningCombo = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ]
+    }
 
-})
-
-cells.forEach((cell) => {
-    cell.addEventListener('click', (e) => {
-        if (cell.classList.contains('ready')) {
-            e.target.textContent = 'X'
-            e.target.classList.remove('hover', 'ready')
-        }
-    })
-    cell.addEventListener('mouseover', (e) => {
-        if (cell.classList.contains('ready')) {
-            e.target.textContent = 'X'
-            e.target.classList.add('hover')
-        }
-    })
-    cell.addEventListener('mouseleave', (e) => {
-        if (cell.classList.contains('ready')) {
-            e.target.textContent = ''
-            e.target.classList.remove('hover')
-        }
-    })
-})
+    const reset = () => {
+        gameMarks = ['', '', '', '', '', '', '', '', ''];
+    }
+    return {
+        getGameMarks,
+        checkWinner,
+        reset,
+    }
+})()
