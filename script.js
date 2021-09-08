@@ -3,55 +3,60 @@ const playerOneBtn = document.querySelector('#player-one-btn')
 const playerTwoBtn = document.querySelector('#player-two-btn')
 const playerInput = document.querySelectorAll('[data-player]')
 const cells = document.querySelectorAll('[data-cell]');
+const gameBoardDiv = document.querySelectorAll('.game-board')
 
-function getIndex(elem) {
-    return cells.indexOf(elem)
+let xTurn = true;
+
+const turn = () => {
+    if (xTurn === true) {
+        return `X`
+    } else if (xTurn === false) {
+        return 'O'
+    }
 }
 
-const playerFactory = (name) => {
-    let xTurn = true;
-    const getName = () => name;
-    const turn = () => {
-        if (xTurn == true) {
-            return `X`
-        } else if (xTurn == false) {
-            return 'O'
+cells.forEach((cell) => {
+    cell.addEventListener('click', (e) => {
+        let newArr = [...cells]
+        let index = newArr.indexOf(e.target)
+        if (cell.classList.contains('ready')) {
+            e.target.textContent = `${turn()}`;
+            e.target.classList.remove('hover', 'ready')
+            xTurn = !xTurn
+            console.log(index)
         }
-    }
-
-    cells.forEach((cell) => {
-        cell.addEventListener('click', (e) => {
-            if (cell.classList.contains('ready')) {
-                e.target.textContent = `${turn()}`;
-                e.target.classList.remove('hover', 'ready')
-                xTurn = !xTurn
-            }
-        })
-        cell.addEventListener('mouseover', (e) => {
-            if (cell.classList.contains('ready')) {
-                e.target.textContent = `${turn()}`;
-                e.target.classList.add('hover')
-            }
-        })
-        cell.addEventListener('mouseleave', (e) => {
-            if (cell.classList.contains('ready')) {
-                e.target.textContent = ``;
-                e.target.classList.remove('hover')
-            }
-        })
     })
-    return {
-        getName,
-        turn
-    }
-}
+    cell.addEventListener('mouseover', (e) => {
+        if (cell.classList.contains('ready')) {
+            e.target.textContent = `${turn()}`;
+            e.target.classList.add('hover')
+        }
+    })
+    cell.addEventListener('mouseleave', (e) => {
+        if (cell.classList.contains('ready')) {
+            e.target.textContent = '';
+            e.target.classList.remove('hover')
+        }
+    })
 
-const mikey = playerFactory('mikey')
+})
 
 const gameModule = (() => {
-    const gameMarks = ['', '', '', '', '', '', '', '', ''];
+    const playerOne = {
+        name: 'Player 1',
+        mark: 'X'
+    }
+    const playerTwo = {
+        name: 'Player 2',
+        mark: 'O'
+    }
+    const gameMarks = ['', '', '', '', '', '', '', '', '']
+
+
     const getGameMarks = () => {
-        return gameMarks
+        return {
+            gameMarks
+        }
     }
     const gameBoard = document.querySelector('.game-board')
 
