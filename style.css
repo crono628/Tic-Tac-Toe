@@ -1,71 +1,46 @@
 *,
-*::before,
-*::after {
-    box-sizing: border-box;
+::before,
+::after {
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  background-color: darkslategray;
 }
 
-.game-board {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    grid-template-columns: repeat(3, auto);
+.container {
+  display: flex;
+  min-width: 300px;
+  max-width: 300px;
+  height: 300px;
+  border: none;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-    color: black;
-    font-size: 95px;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    cursor: pointer;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  border: solid black;
+  background-color: antiquewhite;
+  font-size: 75px;
 }
 
-.cell:first-child,
-.cell:nth-child(2),
-.cell:nth-child(3) {
-    border-top: none;
+.btn-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  margin-top: 20px;
 }
 
-.cell:nth-child(3n+1) {
-    border-left: none;
-}
-
-.cell:nth-child(3n+3) {
-    border-right: none;
-}
-
-.cell:last-child,
-.cell:nth-child(8),
-.cell:nth-child(7) {
-    border-bottom: none;
-}
-
-.hover {
-    color: rgba(0, 0, 0, 0.3);
-}
-
-.winning-div {
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-.players-div {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100vw;
-    padding: 35px;
-    position: absolute;
+.spin{
+  transform: rotateZ(720deg);
+  transition: 2s;
 }
