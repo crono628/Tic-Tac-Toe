@@ -55,6 +55,7 @@ html {
 .status {
   margin: 10px 0 40px 0;
   position: relative;
+  font-size: 2rem;
 }
 
 .board {
@@ -69,4 +70,40 @@ button {
   font-size: 30px;
   padding: 0 10px 0 10px;
   border-radius: 5px;
+}
+
+.spin {
+  width: 100px;
+  height: 100px;
+  background-color: none;
+  animation-name: spin;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.flip {
+  width: 100px;
+  height: 100px;
+  background-color: none;
+  animation-name: flip;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+}
+
+@keyframes flip {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(270deg);
+  }
 }

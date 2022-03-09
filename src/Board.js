@@ -7,11 +7,15 @@ const Board = () => {
   const [xNext, setXNext] = useState(true);
   const [status, setStatus] = useState('');
   const [gameOver, setGameOver] = useState(false);
+  const [clicked, setClicked] = useState(Array(9).fill(false));
 
   useEffect(() => {
     let winner = calculateWinner(squares);
     if (winner) {
       setStatus('Winner: ' + winner);
+      setGameOver(true);
+    } else if (squares.every((square) => square !== null)) {
+      setStatus("It's a tie!");
       setGameOver(true);
     } else {
       setStatus('Next player: ' + (xNext ? 'X' : 'O'));
@@ -20,13 +24,16 @@ const Board = () => {
 
   const handleClick = (num) => {
     const copy = squares.slice();
+    const boolCopy = clicked.slice();
     if (calculateWinner(copy) || copy[num]) {
       return;
     } else {
       copy[num] = xNext ? 'X' : 'O';
+      boolCopy[num] = true;
       setSquares(copy);
       setXNext(!xNext);
       calculateWinner(copy);
+      setClicked(boolCopy);
     }
   };
 
@@ -36,6 +43,13 @@ const Board = () => {
         key={uniqid()}
         onClick={() => handleClick(num)}
         value={squares[num]}
+        className={
+          clicked[num] && squares[num] === 'X'
+            ? 'square spin'
+            : clicked[num] && squares[num] === 'O'
+            ? 'square flip'
+            : 'square'
+        }
       />
     );
   };
