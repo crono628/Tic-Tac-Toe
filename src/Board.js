@@ -13,9 +13,6 @@ const Board = () => {
     if (winner) {
       setStatus('Winner: ' + winner);
       setGameOver(true);
-    } else if (squares.every((square) => square !== null)) {
-      setStatus("It's a tie!");
-      setGameOver(true);
     } else {
       setStatus('Next player: ' + (xNext ? 'X' : 'O'));
     }
